@@ -61,10 +61,6 @@ header .logo
   transition: 0.5s;
   z-index: 2;
 }
-.showcase.active
-{
-  right: 200px;
-}
 
 
 .showcase video
@@ -178,10 +174,10 @@ header .logo
 .menu
 {
   position: absolute;
-  top: 0;
+  top: 200px;
   right: 0;
-  width: 200px;
-  height: 100%;
+  padding-right: 30px;
+  height: 60%;
   display: none;
   justify-content: center;
   align-items: center;
@@ -219,7 +215,7 @@ header .logo
 }
 
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
     .container{
         /* background: #111; */
         width:80%;
@@ -238,9 +234,41 @@ header .logo
         left:0;
     }
 
+    .showcase.active
+    {
+        right: 270px;
+    }
+
     
 }
-@media only screen and (min-width: 481px) {
+
+@media only screen and (min-width: 501px) and (max-width: 700px) {
+    .container{
+        /* background: #111; */
+        width:80%;
+        padding-left:10px;
+        padding-right:10px;
+        cursor: pointer;
+        color:white;
+    }
+    .container.left{
+        position: relative;
+        left:0;
+    }
+    
+    .right{
+        position: relative;
+        left:0;
+    }
+
+    .showcase.active
+    {
+        right: 0;
+    }
+}
+
+
+@media only screen and (min-width: 701px) {
 .container{
     /* background: #111; */
     width:40%;
@@ -252,14 +280,19 @@ header .logo
 
 .container.left{
     position: relative;
-    left:30%;
+    left:40%;
 }
 
 .right{
     position: relative;
-    left:0;
+    left:20%;
 }
+.showcase.active
+    {
+        right: 0;
+    }
 }
+
 
 #footer{
     position: absolute;
