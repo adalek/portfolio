@@ -1,6 +1,5 @@
 const menuToggle = document.querySelector('.toggle');
 const showcase = document.querySelector('.showcase');
-const video = document.querySelector('video');
 const menu = document.querySelector('.menu');
 const container = document.querySelector('.container');
 
