@@ -2,6 +2,9 @@ const menuToggle = document.querySelector('.toggle');
 const showcase = document.querySelector('.showcase');
 const menu = document.querySelector('.menu');
 const container = document.querySelector('.container');
+const containerall = document.querySelectorAll('.container');
+const backgroundimg = document.querySelector('#backgroundimg');
+const srclist = ["https://media.giphy.com/media/Y2cb4Ykz93Tz2sABNn/giphy.gif", "https://media.giphy.com/media/kP75uYxIsUpVIPPbdb/giphy.gif","https://media.giphy.com/media/L2wcsawRWcy6xL6azY/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"];
 
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
@@ -20,8 +23,14 @@ menuToggle.addEventListener('click', function(){
   }
 });
 
+for (i=0; i<containerall.length; i++){
+  containerall[i].setAttribute("src",srclist[i]);
+}
+
 $(".container").hover(function(){
     $(this).find('h2, p').css({"color": color[Math.floor(Math.random() * color.length)], "transition": "0.5s"});
+    console.log($(this).attr("src"));
+    backgroundimg.src = $(this).attr("src");
 },function(){
     $(this).find('h2, p').css("color", "white");
 }
