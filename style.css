@@ -63,7 +63,7 @@ header .logo
 }
 
 
-.showcase video
+/* .showcase video
 {
   position: fixed;
   top: 0;
@@ -72,7 +72,7 @@ header .logo
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
-}
+} */
 
 .showcase img
 {
@@ -114,7 +114,13 @@ header .logo
   width:100%;
   padding-top: 100px;
 }
-
+.text h1
+{
+  font-weight: 600;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
 .text h2
 {
   font-size: 3em;
@@ -141,7 +147,7 @@ header .logo
 }
 .text a
 {
-  display: inline-block;
+  /* display: inline-block;
   font-size: 1em;
   background: #fff;
   padding: 10px 30px;
@@ -151,13 +157,15 @@ header .logo
   margin-top: 10px;
   color: #111;
   letter-spacing: 2px;
-  transition: 0.2s;
+  transition: 0.2s; */
+  letter-spacing: 6px;
+  text-decoration: none;
 }
 .text a:hover
 {
-  letter-spacing: 6px;
+  /* letter-spacing: 6px; */
 }
-.social
+/* .social
 {
   position: absolute;
   z-index: 10;
@@ -181,7 +189,7 @@ header .logo
 .social li a:hover
 {
   transform: scale(0.5) translateY(-15px);
-}
+} */
 .menu
 {
   position: absolute;
@@ -247,6 +255,14 @@ header .logo
         right: 275px;
     }
 
+    .main img{
+      position: relative;
+      padding: 50px;
+      width:400px;
+      height: 300px;
+      object-fit: fill;
+      opacity: 1;
+    }
     
 }
 
@@ -272,6 +288,14 @@ header .logo
     .showcase.active
     {
         right: 0;
+    }
+    .main img{
+      position: relative;
+      padding: 50px;
+      width:540px;
+      height: 380px;
+      object-fit: fill;
+      opacity: 1;
     }
 }
 
@@ -299,6 +323,15 @@ header .logo
     {
         right: 0;
     }
+
+.main img{
+  position: relative;
+  padding: 50px;
+  width:1000px;
+  height: 600px;
+  object-fit: fill;
+  opacity: 1;
+}
 }
 
 
@@ -393,3 +426,22 @@ header .logo
   .menu-btn.open .menu-btn__burger::after {
     transform: rotate(-45deg) translate(35px, 35px);
   }
+
+
+ 
+.main{
+  width: 80%;
+}
+
+/* .main img{
+  position: relative;
+  padding: 50px;
+  width:1000px;
+  height: 600px;
+  object-fit: fill;
+  opacity: 1;
+} */
+
+li{
+  color:#fff;
+}
