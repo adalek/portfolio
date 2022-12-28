@@ -4,7 +4,7 @@ const menu = document.querySelector('.menu');
 const container = document.querySelector('.container');
 const containerall = document.querySelectorAll('.container');
 const backgroundimg = document.querySelector('#backgroundimg');
-const srclist = ["https://media.giphy.com/media/Y2cb4Ykz93Tz2sABNn/giphy.gif", "https://media.giphy.com/media/kP75uYxIsUpVIPPbdb/giphy.gif","https://media.giphy.com/media/L2wcsawRWcy6xL6azY/giphy.gif","https://media.giphy.com/media/o01myFqXAMXJtFX67K/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"];
+const srclist = ["https://media.giphy.com/media/RV4j4cZR76nZhoTu6m/giphy.gif","https://media.giphy.com/media/uCwKPaIqlDxDRuBPBZ/giphy.gif","https://media.giphy.com/media/TZDbsuOhXabEP8YhlR/giphy.gif","https://media.giphy.com/media/dPIsG7MPxP8PA2LGtZ/giphy.gif","https://media.giphy.com/media/o01myFqXAMXJtFX67K/giphy.gif","https://media.giphy.com/media/kP75uYxIsUpVIPPbdb/giphy.gif","https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"];
 
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
