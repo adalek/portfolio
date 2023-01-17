@@ -145,6 +145,14 @@ header .logo
   font-weight: 300;
   /* max-width: 900px; */
 }
+.text pre
+{
+  font-size: 0.9em;
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 300;
+  /* max-width: 900px; */
+}
 .text a
 {
   /* display: inline-block;
