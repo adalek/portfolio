@@ -458,7 +458,10 @@ li{
   background-color: #fff;
 }
 .view a{
-  color:#4e25b5
+  color:#4e25b5;
+  font-weight: bold;
+  letter-spacing:1px;
+
 }
 .view a:hover{
   text-decoration: underline;
