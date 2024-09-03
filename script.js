@@ -14,8 +14,9 @@ const img7 = "https://media.giphy.com/media/o01myFqXAMXJtFX67K/giphy.gif";
 const img8 = "https://media.giphy.com/media/kP75uYxIsUpVIPPbdb/giphy.gif";
 const donnut = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif";
 const cat = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif";
+const ghost = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDB0bW45cnJ6NHUxbXJ1ZDN0N3ZjNzlyeTNjazE3cXlieTJ5bzk4MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HcfTCAUxmUb65ho5hh/giphy.gif";
 
-const srclist = [img1,img2,img3,img4,img6,img7,img8,donnut,cat];
+const srclist = [ghost,img1,img2,img3,img4,img8,donnut,cat];
 
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
