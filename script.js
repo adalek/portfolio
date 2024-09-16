@@ -75,3 +75,14 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $('.gallery img').click(function() {
+      var imgSrc = $(this).attr('src');
+      $('.overlay-img').attr('src', imgSrc);
+      $('.overlay').fadeIn();
+  });
+
+  $('.overlay').click(function() {
+      $(this).fadeOut();
+  });
+});

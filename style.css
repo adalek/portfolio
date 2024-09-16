@@ -178,10 +178,7 @@ header .logo
   letter-spacing: 6px;
   text-decoration: none;
 }
-.text a:hover
-{
-  /* letter-spacing: 6px; */
-}
+
 /* .social
 {
   position: absolute;
@@ -463,17 +460,19 @@ li{
   color:#fff;
 }
 
-.view{
-  background-color: #fff;
-}
+
 .view a{
-  color:#4e25b5;
+  color:#ece9f3;
   font-weight: bold;
   letter-spacing:1px;
+  text-decoration: underline;
+
 
 }
 .view a:hover{
   text-decoration: underline;
+  color:#ce0505;
+
 }
 
 
@@ -544,3 +543,7 @@ h1 {
     transform: translate(-50%, -50%); /* Center the image within the overlay */
 
 }
+
+
+
+
