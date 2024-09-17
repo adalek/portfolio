@@ -16,8 +16,10 @@ const donnut = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif";
 const cat = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif";
 const ghost = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDB0bW45cnJ6NHUxbXJ1ZDN0N3ZjNzlyeTNjazE3cXlieTJ5bzk4MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HcfTCAUxmUb65ho5hh/giphy.gif";
 const sendrome ="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExazhjc29vdGxsMjliNTZtMHZyMHpjendmbmg3d2ZsN3o5ZWFlZ3F1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xGv9DI65ZvZBDDSnBQ/giphy.gif";
+const rose ="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTRuN2ZhdGFqaDVpNWhkaGZ0Mzl0a2pjMDdvamVrY3A4anMxbTF0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1a6fENrKbn4FhASrDO/giphy.gif" ;
 
-const srclist = [ghost,sendrome,img1,img2,img3,img4,img2,donnut,cat];
+
+const srclist = [ghost,sendrome,img1,rose,img3,img4,img2,donnut,cat];
 
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
