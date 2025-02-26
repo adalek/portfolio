@@ -217,7 +217,8 @@ header .logo
   z-index: 2;
 }
 .menu.active{
-    display: flex;  
+    display: flex; 
+    position:fixed 
 }
 .menu ul
 {
