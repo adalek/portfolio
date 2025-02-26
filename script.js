@@ -19,7 +19,7 @@ const sendrome ="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExazhjc29vdGxsMjliNT
 const rose ="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTRuN2ZhdGFqaDVpNWhkaGZ0Mzl0a2pjMDdvamVrY3A4anMxbTF0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1a6fENrKbn4FhASrDO/giphy.gif" ;
 
 
-const srclist = [cat,ghost,sendrome,img1,rose,img3,img4,img2,donnut,cat];
+const srclist = [ghost,sendrome,img1,rose,img3,img4,img2,donnut,cat];
 
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
