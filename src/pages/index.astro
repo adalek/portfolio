@@ -20,7 +20,7 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
 <BaseLayout title="Xuwen Dong / Portfolio" description="A portfolio of technical art, games, creative coding, visual arts, and process notes.">
   <main class="home">
     <div class="home-bg">
-      <img src={defaultBackground} alt="" data-home-bg />
+      <img src={defaultBackground} alt="" data-home-bg data-fallback-bg={fallbackBackground} />
       <div class="shade"></div>
     </div>
 
@@ -53,6 +53,15 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
     const bg = document.querySelector('[data-home-bg]');
     const links = document.querySelectorAll('[data-bg]');
 
+    if (bg instanceof HTMLImageElement) {
+      bg.addEventListener('error', () => {
+        const fallback = bg.getAttribute('data-fallback-bg');
+        if (fallback && bg.src !== new URL(fallback, window.location.href).href) {
+          bg.src = fallback;
+        }
+      });
+    }
+
     links.forEach((link) => {
       link.addEventListener('mouseenter', () => {
         const next = link.getAttribute('data-bg');
@@ -66,6 +75,8 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
 
 <style>
   .home {
+    position: relative;
+    isolation: isolate;
     min-height: 100vh;
     padding: 120px 42px 54px;
   }
@@ -73,8 +84,9 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
   .home-bg {
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: 0;
     background: #050505;
+    pointer-events: none;
   }
 
   .home-bg img {
@@ -87,10 +99,13 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
   .shade {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.72));
   }
 
   .home-content {
+    position: relative;
+    z-index: 2;
     display: grid;
     gap: 6px;
     width: min(1360px, 100%);
