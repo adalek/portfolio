@@ -1,0 +1,364 @@
+---
+interface ProjectEntry {
+  id: string;
+  data: {
+    title: string;
+    year: number;
+    category: string;
+    tools: string[];
+  };
+}
+
+interface Props {
+  projects: ProjectEntry[];
+}
+
+const { projects } = Astro.props;
+
+const preferredCategoryOrder = ['Technical Art', 'Game', 'Creative Coding', 'Visual Art', 'Sound', 'Archive'];
+const categoryLabels: Record<string, string> = {
+  'Technical Art': 'Tech Art',
+  Game: 'Games',
+  'Creative Coding': 'Code',
+  'Visual Art': 'Visual',
+  Sound: 'Sound',
+  Archive: 'Archive',
+};
+
+const toolLabels: Record<string, string> = {
+  '3D Level Design': '3D Level',
+  '3D Modelling': '3D',
+  'Audiovisual Performance': 'A/V',
+  'Baidu Map API': 'Map API',
+  'Concept Art': 'Concept',
+  'Game Design': 'Design',
+  'Generative Art': 'Gen Art',
+  'Interaction Design': 'Interaction',
+  'JavaScript': 'JS',
+  'Level Design': 'Level',
+  'Live Coding': 'Live Code',
+  'Narrative Design': 'Narrative',
+  'Oculus Quest': 'VR',
+  'Procedural Art': 'Procedural',
+  'Shader Graph': 'Shader',
+  'Sound Design': 'Sound',
+  'Style Guide': 'Guide',
+  'Teachable Machine': 'Teach ML',
+  'Unreal Engine': 'Unreal',
+  'Visual Development': 'Vis Dev',
+};
+
+const projectLabels: Record<string, string> = {
+  'Control: Aftermath': 'Control',
+  'Dancing Pavilion': 'Pavilion',
+  'Enmeshed Tinge': 'Enmeshed',
+  'Music & Sound': 'Sound',
+  'Tech Art 2025': 'TA 2025',
+  'Tech Art 2026': 'TA 2026',
+  'Technology Temple Maze': 'Temple',
+  'The Nightingale and the Rose': 'Nightingale',
+  'The Way': 'Way',
+  'Visual Arts': 'Visuals',
+  'Web Design & UX Design': 'Web/UX',
+  'Why Not Leave': 'WNL',
+};
+
+const getCategoryLabel = (category: string) => categoryLabels[category] ?? category;
+const getToolLabel = (tool: string) => toolLabels[tool] ?? tool;
+const getProjectLabel = (title: string) => projectLabels[title] ?? title;
+const hiddenCategories = new Set(['Creative Coding', 'Archive']);
+const visibleProjects = projects.filter((project) => !hiddenCategories.has(project.data.category));
+
+const categories = Array.from(new Set(visibleProjects.map((project) => project.data.category))).sort((a, b) => {
+  const ai = preferredCategoryOrder.indexOf(a);
+  const bi = preferredCategoryOrder.indexOf(b);
+  if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  return a.localeCompare(b);
+});
+
+const tools = Array.from(new Set(visibleProjects.flatMap((project) => project.data.tools))).sort((a, b) => a.localeCompare(b));
+const toolCounts = new Map<string, number>();
+visibleProjects.forEach((project) => {
+  project.data.tools.forEach((tool) => toolCounts.set(tool, (toolCounts.get(tool) ?? 0) + 1));
+});
+
+const width = 1000;
+const topY = 82;
+const projectY = 212;
+const toolY = 342;
+const categoryNodes = categories.map((category, index) => ({
+  label: category,
+  displayLabel: getCategoryLabel(category),
+  key: category.toLowerCase(),
+  x: 90 + (categories.length <= 1 ? 0.5 : index / (categories.length - 1)) * 820,
+  y: topY,
+}));
+
+const projectNodes = visibleProjects.map((project) => {
+  const category = categoryNodes.find((node) => node.label === project.data.category) ?? categoryNodes[0];
+  const siblings = visibleProjects.filter((item) => item.data.category === project.data.category);
+  const siblingIndex = siblings.findIndex((item) => item.id === project.id);
+  const offset = (siblingIndex - (siblings.length - 1) / 2) * 54;
+  return {
+    id: project.id,
+    title: project.data.title,
+    displayTitle: getProjectLabel(project.data.title),
+    year: project.data.year,
+    category: project.data.category,
+    tools: project.data.tools,
+    x: Math.max(58, Math.min(width - 58, category.x + offset)),
+    y: projectY + (siblingIndex % 2) * 28,
+  };
+});
+
+const toolNodes = tools.map((tool, index) => ({
+  label: tool,
+  displayLabel: getToolLabel(tool),
+  key: tool.toLowerCase(),
+  count: toolCounts.get(tool) ?? 1,
+  x: 58 + (tools.length <= 1 ? 0.5 : index / (tools.length - 1)) * 884,
+  y: toolY + (index % 3) * 24,
+}));
+
+const categoryEdges = projectNodes.map((project) => {
+  const category = categoryNodes.find((node) => node.label === project.category) ?? categoryNodes[0];
+  return {
+    key: category.key,
+    project: project.id,
+    d: `M ${category.x.toFixed(1)} ${category.y + 18} C ${category.x.toFixed(1)} 142, ${project.x.toFixed(1)} 142, ${project.x.toFixed(1)} ${project.y - 18}`,
+  };
+});
+
+const toolEdges = projectNodes.flatMap((project) =>
+  project.tools.map((tool) => {
+    const toolNode = toolNodes.find((node) => node.label === tool) ?? toolNodes[0];
+    return {
+      key: tool.toLowerCase(),
+      project: project.id,
+      d: `M ${project.x.toFixed(1)} ${project.y + 18} C ${project.x.toFixed(1)} 286, ${toolNode.x.toFixed(1)} 286, ${toolNode.x.toFixed(1)} ${toolNode.y - 14}`,
+    };
+  }),
+);
+---
+
+<section class="tag-map" aria-label="Portfolio relationship map" data-tag-map>
+  <svg viewBox="0 0 1000 430" role="img" aria-labelledby="tag-map-title tag-map-desc">
+    <title id="tag-map-title">Portfolio relationship map</title>
+    <desc id="tag-map-desc">Categories, projects, and tool tags are arranged in three levels. Lines show how projects connect to categories and tools.</desc>
+
+    <g class="guide-lines" aria-hidden="true">
+      <line x1="40" y1={topY} x2="960" y2={topY}></line>
+      <line x1="40" y1={projectY + 18} x2="960" y2={projectY + 18}></line>
+      <line x1="40" y1={toolY + 24} x2="960" y2={toolY + 24}></line>
+    </g>
+
+    <g class="category-edges">
+      {categoryEdges.map((edge) => (
+        <path d={edge.d} data-map-edge data-edge-key={edge.key} data-edge-project={edge.project}></path>
+      ))}
+    </g>
+
+    <g class="tool-edges">
+      {toolEdges.map((edge) => (
+        <path d={edge.d} data-map-edge data-edge-key={edge.key} data-edge-project={edge.project}></path>
+      ))}
+    </g>
+
+    <g class="categories">
+      {categoryNodes.map((category) => (
+        <g class="category-node" data-map-node data-node-key={category.key} transform={`translate(${category.x} ${category.y})`}>
+          <circle r="18"></circle>
+          <text y="-28">{category.displayLabel}</text>
+        </g>
+      ))}
+    </g>
+
+    <g class="projects">
+      {projectNodes.map((project) => (
+        <a href={`/work/${project.id}`} class="project-node" data-map-project={project.id} transform={`translate(${project.x} ${project.y})`}>
+          <circle r="9"></circle>
+          <text y="27">{project.displayTitle}</text>
+          <text class="year" y="42">{project.year}</text>
+        </a>
+      ))}
+    </g>
+
+    <g class="tools">
+      {toolNodes.map((tool) => (
+        <g class="tool-node" data-map-node data-node-key={tool.key} transform={`translate(${tool.x} ${tool.y})`}>
+          <circle r={4 + tool.count * 2}></circle>
+          <text y="20">{tool.displayLabel}</text>
+        </g>
+      ))}
+    </g>
+  </svg>
+</section>
+
+<script>
+  const maps = document.querySelectorAll('[data-tag-map]');
+
+  maps.forEach((map) => {
+    const nodes = map.querySelectorAll('[data-map-node]');
+    const projects = map.querySelectorAll('[data-map-project]');
+    const edges = map.querySelectorAll('[data-map-edge]');
+
+    function clear() {
+      nodes.forEach((node) => node.classList.remove('is-active', 'is-muted'));
+      projects.forEach((project) => project.classList.remove('is-active', 'is-muted'));
+      edges.forEach((edge) => edge.classList.remove('is-active', 'is-muted'));
+    }
+
+    nodes.forEach((node) => {
+      node.addEventListener('mouseenter', () => {
+        const key = node.getAttribute('data-node-key');
+        nodes.forEach((item) => item.classList.toggle('is-muted', item !== node));
+        projects.forEach((project) => project.classList.add('is-muted'));
+        edges.forEach((edge) => {
+          const matches = edge.getAttribute('data-edge-key') === key;
+          edge.classList.toggle('is-active', matches);
+          edge.classList.toggle('is-muted', !matches);
+          if (matches) {
+            const id = edge.getAttribute('data-edge-project');
+            map.querySelector(`[data-map-project="${id}"]`)?.classList.add('is-active');
+            map.querySelector(`[data-map-project="${id}"]`)?.classList.remove('is-muted');
+          }
+        });
+        node.classList.add('is-active');
+        node.classList.remove('is-muted');
+      });
+
+      node.addEventListener('mouseleave', clear);
+      node.addEventListener('click', () => {
+        const key = node.getAttribute('data-node-key');
+        document.querySelector(`[data-filter="${key}"]`)?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      });
+    });
+  });
+</script>
+
+<style>
+  .tag-map {
+    --map-paper: rgba(245, 241, 235, 0.72);
+    --map-quiet: rgba(245, 241, 235, 0.38);
+    --map-faint: rgba(245, 241, 235, 0.11);
+    --map-rose: #ff8a7a;
+    --map-cyan: #8ed8d1;
+    --map-gold: #e2c36a;
+    margin: 34px 0 28px;
+    overflow: hidden;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .guide-lines line {
+    stroke: rgba(245, 241, 235, 0.055);
+    stroke-width: 1;
+  }
+
+  path {
+    fill: none;
+    stroke-linecap: round;
+    transition: opacity 160ms ease, stroke 160ms ease, stroke-width 160ms ease;
+  }
+
+  .category-edges path {
+    stroke: rgba(255, 138, 122, 0.24);
+    stroke-width: 1;
+  }
+
+  .tool-edges path {
+    stroke: rgba(226, 195, 106, 0.15);
+    stroke-width: 0.7;
+  }
+
+  path.is-active {
+    stroke: var(--map-cyan);
+    stroke-width: 1.45;
+    opacity: 0.86;
+  }
+
+  path.is-muted {
+    opacity: 0.08;
+  }
+
+  circle {
+    transition: fill 160ms ease, stroke 160ms ease, opacity 160ms ease;
+  }
+
+  .category-node circle {
+    fill: rgba(255, 138, 122, 0.11);
+    stroke: rgba(255, 138, 122, 0.56);
+    stroke-width: 1;
+  }
+
+  .project-node circle {
+    fill: rgba(142, 216, 209, 0.32);
+    stroke: rgba(142, 216, 209, 0.7);
+    stroke-width: 1;
+  }
+
+  .tool-node circle {
+    fill: rgba(226, 195, 106, 0.16);
+    stroke: rgba(226, 195, 106, 0.48);
+    stroke-width: 1;
+  }
+
+  .is-active circle {
+    fill: rgba(214, 255, 98, 0.34);
+    stroke: rgba(214, 255, 98, 0.9);
+  }
+
+  .is-muted {
+    opacity: 0.28;
+  }
+
+  text {
+    fill: var(--map-paper);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+
+  .category-node text {
+    fill: rgba(245, 241, 235, 0.78);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-node text {
+    fill: rgba(245, 241, 235, 0.64);
+    font-size: 9.5px;
+  }
+
+  .project-node .year {
+    fill: rgba(245, 241, 235, 0.34);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .tool-node text {
+    fill: rgba(245, 241, 235, 0.5);
+    font-size: 8px;
+  }
+
+  @media (max-width: 760px) {
+    .tag-map {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    svg {
+      min-width: 860px;
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  href: string;
+  background: string;
+  align?: 'left' | 'right';
+}
+
+const { title, summary, href, background, align = 'left' } = Astro.props;
+---
+
+<a class:list={['feature-link', align]} href={href} data-bg={background}>
+  <span>{title}</span>
+  <small>{summary}</small>
+</a>
+
+<style>
+  .feature-link {
+    display: block;
+    width: min(620px, 86vw);
+    padding: 18px 0;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .feature-link.right {
+    margin-left: auto;
+  }
+
+  .feature-link span {
+    display: block;
+    font-size: clamp(36px, 8vw, 104px);
+    font-weight: 800;
+    line-height: 0.86;
+  }
+
+  .feature-link small {
+    display: block;
+    max-width: 520px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(12px, 1.8vw, 17px);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.45;
+  }
+
+  .feature-link:hover span,
+  .feature-link:hover small {
+    color: var(--accent);
+  }
+
+  @media (max-width: 720px) {
+    .feature-link,
+    .feature-link.right {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+</style>

@@ -1,0 +1,160 @@
+<header class="site-header">
+  <a class="brand" href="/">Xuwen Dong</a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="/work">Work</a>
+    <a href="/blog">Blog</a>
+    <a href="/about">About</a>
+  </nav>
+  <button class="menu-button" type="button" aria-label="Toggle menu" aria-expanded="false" data-menu-button>
+    <span></span>
+  </button>
+</header>
+
+<aside class="menu-panel" data-menu-panel>
+  <a href="/">Home</a>
+  <a href="/work">Work</a>
+  <a href="/blog">Blog</a>
+  <a href="/about">About</a>
+  <a href="https://github.com/adalek" target="_blank" rel="noreferrer">GitHub</a>
+  <a href="https://10000cats.itch.io/" target="_blank" rel="noreferrer">itch.io</a>
+</aside>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 34px 42px;
+    pointer-events: none;
+  }
+
+  .brand,
+  .desktop-nav,
+  .menu-button {
+    pointer-events: auto;
+  }
+
+  .brand {
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: 22px;
+    margin-left: auto;
+    margin-right: 24px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .desktop-nav a:hover {
+    color: white;
+  }
+
+  .menu-button {
+    position: relative;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-button span,
+  .menu-button::before,
+  .menu-button::after {
+    width: 32px;
+    height: 3px;
+    background: white;
+    content: "";
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .menu-button::before,
+  .menu-button::after {
+    position: absolute;
+  }
+
+  .menu-button::before {
+    transform: translateY(-10px);
+  }
+
+  .menu-button::after {
+    transform: translateY(10px);
+  }
+
+  .menu-button[aria-expanded="true"] span {
+    opacity: 0;
+  }
+
+  .menu-button[aria-expanded="true"]::before {
+    transform: rotate(45deg);
+  }
+
+  .menu-button[aria-expanded="true"]::after {
+    transform: rotate(-45deg);
+  }
+
+  .menu-panel {
+    position: fixed;
+    top: 92px;
+    right: 42px;
+    z-index: 25;
+    display: grid;
+    gap: 14px;
+    min-width: 220px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(8, 8, 8, 0.84);
+    backdrop-filter: blur(18px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .menu-panel[data-open] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .menu-panel a {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      padding: 24px 18px;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .brand {
+      font-size: 15px;
+    }
+
+    .menu-panel {
+      top: 78px;
+      right: 18px;
+      left: 18px;
+    }
+  }
+</style>

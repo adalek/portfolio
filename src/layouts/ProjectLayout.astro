@@ -1,0 +1,154 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import MediaBlock from '../components/MediaBlock.astro';
+
+const { entry } = Astro.props;
+const project = entry.data;
+const hasHeroImage = project.cover.length > 0 && !project.cover.toLowerCase().endsWith('.pdf');
+---
+
+<BaseLayout title={`${project.title} / Xuwen Dong`} description={project.summary}>
+  <main class="page-shell">
+    <article class="narrow project">
+      <p class="eyebrow">{project.year} / {project.category}</p>
+      <h1 class="section-title">{project.title}</h1>
+      <p class="summary">{project.summary}</p>
+
+      <dl class="meta-grid">
+        <div>
+          <dt>Role</dt>
+          <dd>{project.role.join(', ')}</dd>
+        </div>
+        <div>
+          <dt>Tools</dt>
+          <dd>{project.tools.join(', ')}</dd>
+        </div>
+      </dl>
+
+      {
+        project.links.length > 0 && (
+          <ul class="project-links">
+            {project.links.map((link) => (
+              <li><a href={link.url} target="_blank" rel="noreferrer">{link.label}</a></li>
+            ))}
+          </ul>
+        )
+      }
+
+      {hasHeroImage && <img class="hero-image" src={project.cover} alt="" />}
+      <div class="content">
+        <slot />
+      </div>
+      <MediaBlock items={project.media} />
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .project {
+    padding-bottom: 72px;
+  }
+
+  .summary {
+    margin: 22px 0 0;
+    color: var(--muted);
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.42;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 44px 0 0;
+    padding: 22px 0;
+    border-block: 1px solid var(--line);
+  }
+
+  dt {
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-links a {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    padding: 10px 13px;
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 720px;
+    margin-top: 48px;
+    object-fit: cover;
+    background: #111;
+  }
+
+  .content {
+    margin-top: 48px;
+  }
+
+  .content :global(h2) {
+    margin: 44px 0 14px;
+    font-size: clamp(24px, 4vw, 42px);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .content :global(p),
+  .content :global(li) {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .content :global(a) {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: rgba(214, 255, 98, 0.62);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease;
+  }
+
+  .content :global(a:hover) {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  .content :global(ul) {
+    padding-left: 22px;
+  }
+
+  @media (max-width: 720px) {
+    .meta-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

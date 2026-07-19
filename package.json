@@ -1,5 +1,17 @@
 {
+  "name": "xuwen-dong-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
   "dependencies": {
-    "@vercel/analytics": "^0.1.6"
+    "@astrojs/sitemap": "^3.7.3",
+    "@vercel/analytics": "^0.1.6",
+    "astro": "^7.1.1"
   }
 }

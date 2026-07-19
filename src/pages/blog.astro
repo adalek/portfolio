@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog / Xuwen Dong" description="Technical art notes, process breakdowns, and production writing by Xuwen Dong.">
+  <main class="page-shell">
+    <section class="narrow">
+      <p class="eyebrow">Technical Notes</p>
+      <h1 class="section-title">Blog</h1>
+      <p class="body-copy">A place for shader notes, Houdini experiments, Unity tools, production process, and project breakdowns.</p>
+
+      <div class="post-list">
+        {posts.map((post) => (
+          <article>
+            <a href={`/blog/${post.id}`}>
+              <p>{post.data.date.toLocaleDateString('en-GB')}</p>
+              <h2>{post.data.title}</h2>
+              <span>{post.data.summary}</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .post-list {
+    margin-top: 52px;
+  }
+
+  article {
+    border-top: 1px solid var(--line);
+  }
+
+  article a {
+    display: grid;
+    gap: 10px;
+    padding: 24px 0;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  span {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+</style>

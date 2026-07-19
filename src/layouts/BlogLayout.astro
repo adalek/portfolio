@@ -1,0 +1,54 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { entry } = Astro.props;
+const post = entry.data;
+---
+
+<BaseLayout title={`${post.title} / Xuwen Dong`} description={post.summary}>
+  <main class="page-shell">
+    <article class="narrow blog-post">
+      <p class="eyebrow">{post.date.toLocaleDateString('en-GB')} / Technical Blog</p>
+      <h1 class="section-title">{post.title}</h1>
+      <p class="summary">{post.summary}</p>
+      <ul class="tag-list">
+        {post.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+      <div class="content">
+        <slot />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .summary {
+    margin: 22px 0;
+    color: var(--muted);
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .content {
+    margin-top: 48px;
+  }
+
+  .content :global(h2) {
+    margin: 40px 0 12px;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+
+  .content :global(p),
+  .content :global(li) {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .content :global(pre) {
+    overflow: auto;
+    padding: 18px;
+    background: #121212;
+  }
+</style>

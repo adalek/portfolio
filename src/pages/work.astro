@@ -1,0 +1,239 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TagConstellation from '../components/TagConstellation.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => {
+  if (a.data.year !== b.data.year) return b.data.year - a.data.year;
+  return a.data.order - b.data.order;
+});
+
+const filterTags = Array.from(
+  new Set(projects.flatMap((project) => [project.data.category, ...project.data.tools])),
+).sort((a, b) => a.localeCompare(b));
+
+const preferredCategoryOrder = ['Technical Art', 'Game', 'Creative Coding', 'Visual Art', 'Sound', 'Archive'];
+const projectCategories = Array.from(new Set(projects.map((project) => project.data.category)));
+const categories = [
+  ...preferredCategoryOrder.filter((category) => projectCategories.includes(category)),
+  ...projectCategories.filter((category) => !preferredCategoryOrder.includes(category)).sort(),
+];
+---
+
+<BaseLayout title="Work / Xuwen Dong" description="Selected projects by Xuwen Dong across games, technical art, creative coding, visual arts, and sound.">
+  <main class="page-shell">
+    <section class="wide">
+      <p class="eyebrow">Selected Portfolio</p>
+      <h1 class="section-title">Work</h1>
+      <p class="body-copy intro">A recruitment-focused archive with category browsing, time sorting, process images, videos, roles, and technical notes.</p>
+
+      <TagConstellation projects={projects} />
+
+      <div class="view-toggle" aria-label="Project view mode">
+        <button class="view-button active" type="button" data-view-button="category" aria-pressed="true">Category</button>
+        <button class="view-button" type="button" data-view-button="time" aria-pressed="false">Newest first</button>
+      </div>
+
+      <div class="filter-panel" aria-label="Filter projects by tag">
+        <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+        {filterTags.map((tag) => (
+          <button class="filter-button" type="button" data-filter={tag.toLowerCase()} aria-pressed="false">{tag}</button>
+        ))}
+      </div>
+
+      <p class="empty-state" data-empty-state hidden>No projects match this tag yet.</p>
+
+      <div class="category-view" data-view="category">
+        {categories.map((category) => {
+          const categoryProjects = projects.filter((project) => project.data.category === category);
+
+          return (
+            <section class="category-block" data-category-section>
+              <h2>{category}</h2>
+              <div class="project-list">
+                {categoryProjects.map((project) => (
+                  <ProjectCard
+                    title={project.data.title}
+                    href={`/work/${project.id}`}
+                    cover={project.data.cover}
+                    year={project.data.year}
+                    category={project.data.category}
+                    summary={project.data.summary}
+                    tools={project.data.tools}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+
+      <div class="project-list" data-view="time" hidden>
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            href={`/work/${project.id}`}
+            cover={project.data.cover}
+            year={project.data.year}
+            category={project.data.category}
+            summary={project.data.summary}
+            tools={project.data.tools}
+          />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const viewButtons = document.querySelectorAll('[data-view-button]');
+    const views = document.querySelectorAll('[data-view]');
+    const emptyState = document.querySelector('[data-empty-state]');
+    let activeFilter = 'all';
+    let activeView = 'category';
+
+    function applyWorkView() {
+      let visibleCount = 0;
+
+      views.forEach((view) => {
+        const isActiveView = view.getAttribute('data-view') === activeView;
+        view.toggleAttribute('hidden', !isActiveView);
+
+        const cards = view.querySelectorAll('[data-project-card]');
+        cards.forEach((card) => {
+          const tags = card.getAttribute('data-tags')?.split('|') ?? [];
+          const shouldShow = activeFilter === 'all' || tags.includes(activeFilter);
+          card.toggleAttribute('hidden', !shouldShow);
+          if (isActiveView && shouldShow) visibleCount += 1;
+        });
+
+        view.querySelectorAll('[data-category-section]').forEach((section) => {
+          const hasVisibleCards = section.querySelector('[data-project-card]:not([hidden])') !== null;
+          section.toggleAttribute('hidden', !hasVisibleCards);
+        });
+      });
+
+      emptyState?.toggleAttribute('hidden', visibleCount > 0);
+    }
+
+    viewButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeView = button.getAttribute('data-view-button') ?? 'category';
+
+        viewButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        applyWorkView();
+      });
+    });
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.getAttribute('data-filter') ?? 'all';
+
+        filterButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        applyWorkView();
+      });
+    });
+
+    applyWorkView();
+  </script>
+</BaseLayout>
+
+<style>
+  .intro {
+    max-width: 760px;
+  }
+
+  .view-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 34px 0 18px;
+  }
+
+  .view-button {
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .view-button:hover,
+  .view-button.active {
+    color: white;
+    border-color: white;
+  }
+
+  .filter-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 44px;
+  }
+
+  .filter-button {
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .filter-button:hover,
+  .filter-button.active {
+    border-color: white;
+    color: white;
+  }
+
+  .empty-state {
+    border-top: 1px solid var(--line);
+    margin: 0;
+    padding: 28px 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .project-list {
+    margin-top: 18px;
+  }
+
+  .category-block {
+    margin-top: 50px;
+  }
+
+  .category-block:first-child {
+    margin-top: 20px;
+  }
+
+  .category-block h2 {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  [hidden] {
+    display: none;
+  }
+</style>
