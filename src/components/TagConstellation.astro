@@ -248,6 +248,12 @@ const toolEdges = projectNodes.flatMap((project) =>
     overflow: hidden;
   }
 
+  :root[data-theme='light'] .tag-map {
+    --map-paper: rgba(72, 68, 62, 0.62);
+    --map-quiet: rgba(72, 68, 62, 0.4);
+    --map-faint: rgba(72, 68, 62, 0.13);
+  }
+
   svg {
     width: 100%;
     height: auto;
@@ -329,25 +335,25 @@ const toolEdges = projectNodes.flatMap((project) =>
   }
 
   .category-node text {
-    fill: rgba(245, 241, 235, 0.78);
+    fill: var(--map-paper);
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .project-node text {
-    fill: rgba(245, 241, 235, 0.64);
+    fill: var(--map-quiet);
     font-size: 9.5px;
   }
 
   .project-node .year {
-    fill: rgba(245, 241, 235, 0.34);
+    fill: var(--map-faint);
     font-size: 8px;
     letter-spacing: 0.1em;
   }
 
   .tool-node text {
-    fill: rgba(245, 241, 235, 0.5);
+    fill: var(--map-quiet);
     font-size: 8px;
   }
 
