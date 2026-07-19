@@ -85,7 +85,7 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
     position: fixed;
     inset: 0;
     z-index: 0;
-    background: #050505;
+    background: var(--bg);
     pointer-events: none;
   }
 
@@ -101,8 +101,8 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
     inset: 0;
     z-index: 1;
     background:
-      linear-gradient(90deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.52)),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 34%, rgba(0, 0, 0, 0.28));
+      var(--home-shade-x),
+      var(--home-shade-y);
   }
 
   .home-content {
@@ -121,7 +121,7 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
 
   .intro p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.74);
+    color: var(--home-muted);
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.16em;

@@ -55,7 +55,7 @@ const hasImageCover = cover.length > 0 && !isPdfCover;
   .image-wrap {
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    background: #181818;
+    background: var(--media-bg);
   }
 
   img {
@@ -77,8 +77,8 @@ const hasImageCover = cover.length > 0 && !isPdfCover;
     padding: 18px;
     background:
       linear-gradient(135deg, rgba(214, 255, 98, 0.16), transparent 42%),
-      linear-gradient(180deg, #161616, #0d0d0d);
-    color: white;
+      linear-gradient(180deg, var(--panel), var(--bg));
+    color: var(--text);
   }
 
   .document-cover span {

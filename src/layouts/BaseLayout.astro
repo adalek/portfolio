@@ -23,6 +23,11 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <title>{title}</title>
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      const theme = savedTheme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = theme;
+    </script>
   </head>
   <body>
     <SiteHeader />
@@ -35,6 +40,24 @@ const {
         const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
         menuButton.setAttribute('aria-expanded', String(!isOpen));
         menuPanel?.toggleAttribute('data-open', !isOpen);
+      });
+
+      const themeButton = document.querySelector('[data-theme-button]');
+      const themeLabel = document.querySelector('[data-theme-label]');
+
+      function syncThemeLabel() {
+        const isLight = document.documentElement.dataset.theme === 'light';
+        if (themeButton) themeButton.setAttribute('aria-pressed', String(isLight));
+        if (themeLabel) themeLabel.textContent = isLight ? 'Black' : 'White';
+      }
+
+      syncThemeLabel();
+
+      themeButton?.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem('theme', nextTheme);
+        syncThemeLabel();
       });
     </script>
   </body>
