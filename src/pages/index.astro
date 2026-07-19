@@ -52,6 +52,7 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
   <script>
     const bg = document.querySelector('[data-home-bg]');
     const links = document.querySelectorAll('[data-bg]');
+    const hoverColors = ['#ff6b9d', '#7fc7ff', '#d6ff62', '#ff8a4c', '#b497ff', '#58e0c2'];
 
     if (bg instanceof HTMLImageElement) {
       bg.addEventListener('error', () => {
@@ -67,6 +68,10 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
         const next = link.getAttribute('data-bg');
         if (bg instanceof HTMLImageElement && next) {
           bg.src = next;
+        }
+        if (link instanceof HTMLElement) {
+          const color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+          link.style.setProperty('--feature-hover', color);
         }
       });
     });
