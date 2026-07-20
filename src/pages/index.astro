@@ -7,7 +7,7 @@ const projects = (await getCollection('projects'))
   .filter((project) => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
 
-const fallbackBackground = '/assets/GIF1.gif';
+const fallbackBackground = '/assets/enmeshed-tinge-light-pattern.gif';
 const getUsableBackground = (background?: string, cover = '') => {
   const source = background || cover;
   if (!source || source.toLowerCase().endsWith('.pdf')) return fallbackBackground;

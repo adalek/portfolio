@@ -5,7 +5,7 @@ category: "Game"
 summary: "A VR experience about art education, coercion, and losing oneself into a puppet-like state."
 role: ["Unity Programmer", "Art Designer"]
 tools: ["Unity", "Oculus Quest", "VR", "Interaction Design", "2D Art"]
-cover: "/assets/dan1.png"
+cover: "/assets/dancing-pavilion-01.png"
 featured: false
 order: 12
 media:
@@ -16,13 +16,13 @@ media:
     src: "https://www.youtube.com/embed/k3NJgkU8z24"
     caption: "End scene and Unity recording."
   - type: "image"
-    src: "/assets/dan1.png"
+    src: "/assets/dancing-pavilion-01.png"
     caption: "Dancing Pavilion visual."
   - type: "image"
-    src: "/assets/dan2.png"
+    src: "/assets/dancing-pavilion-02.png"
     caption: "Dancing Pavilion visual."
   - type: "image"
-    src: "/assets/dan3.jpg"
+    src: "/assets/dancing-pavilion-03.jpg"
     caption: "Dancing Pavilion visual."
 ---
 

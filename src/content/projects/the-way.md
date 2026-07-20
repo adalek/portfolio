@@ -5,7 +5,7 @@ category: "Creative Coding"
 summary: "An interactive 3D web experience that uses minimalist cubes, movement, and spatial transformation as a symbolic journey."
 role: ["Programmer", "Art Designer"]
 tools: ["Three.js", "p5.js", "JavaScript", "WebGL"]
-cover: "/assets/project2-1.jpg"
+cover: "/assets/the-way-cover.jpg"
 background: "https://media.giphy.com/media/uCwKPaIqlDxDRuBPBZ/giphy.gif"
 featured: true
 order: 7
@@ -19,10 +19,10 @@ media:
     src: "https://player.vimeo.com/video/771165156?h=40e10471d7&badge=0&autopause=0&player_id=0&app_id=58479"
     caption: "The Way video documentation."
   - type: "image"
-    src: "/assets/project2-1.jpg"
+    src: "/assets/the-way-cover.jpg"
     caption: "Interactive 3D space."
   - type: "image"
-    src: "/assets/project1-1.jpeg"
+    src: "/assets/the-way-control-reference.jpeg"
     caption: "Inspiration reference: Control."
   - type: "video"
     src: "https://giphy.com/embed/QCuHvA9w0V7e45XAU0"

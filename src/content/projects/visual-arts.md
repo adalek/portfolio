@@ -5,25 +5,25 @@ category: "Visual Art"
 summary: "A collection of drawings, modelling studies, generative sketches, and visual experiments."
 role: ["Artist", "Designer"]
 tools: ["Drawing", "3D Modelling", "Illustrator", "Procreate", "Generative Art"]
-cover: "/assets/project4-1.jpg"
+cover: "/assets/visual-arts-01.jpg"
 background: "https://media.giphy.com/media/75epjnrY0ql0kJN34d/giphy.gif"
 featured: false
 order: 20
 media:
   - type: "image"
-    src: "/assets/project4-1.jpg"
+    src: "/assets/visual-arts-01.jpg"
     caption: "Visual art study."
   - type: "image"
-    src: "/assets/project4-2.jpg"
+    src: "/assets/visual-arts-02.jpg"
     caption: "Visual art study."
   - type: "image"
-    src: "/assets/project4-3.jpg"
+    src: "/assets/visual-arts-03.jpg"
     caption: "Illustrator study."
   - type: "image"
-    src: "/assets/project4-4.jpg"
+    src: "/assets/visual-arts-04.jpg"
     caption: "Visual art study."
   - type: "image"
-    src: "/assets/project4-5.png"
+    src: "/assets/visual-arts-05.png"
     caption: "Visual experiment."
   - type: "video"
     src: "https://giphy.com/embed/o01myFqXAMXJtFX67K"
@@ -38,7 +38,7 @@ media:
     src: "https://giphy.com/embed/zRHRVCtt9KkGcSzuTF"
     caption: "Animated visual experiment."
   - type: "image"
-    src: "/assets/project4-8.jpg"
+    src: "/assets/visual-arts-08.jpg"
     caption: "Visual art study."
 ---
 

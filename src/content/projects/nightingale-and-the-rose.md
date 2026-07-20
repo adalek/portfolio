@@ -5,7 +5,7 @@ category: "Game"
 summary: "A 2D puzzle game based on The Nightingale and the Rose, with story production and design documentation."
 role: ["Story", "Producer"]
 tools: ["Game Design", "Narrative Design", "Production", "Unity"]
-cover: "/assets/NightingaleBrainstorm.pdf"
+cover: "/assets/nightingale-design-document.pdf"
 background: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTRuN2ZhdGFqaDVpNWhkaGZ0Mzl0a2pjMDdvamVrY3A4anMxbTF0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1a6fENrKbn4FhASrDO/giphy.gif"
 featured: true
 order: 8
@@ -17,7 +17,7 @@ media:
     src: "https://www.youtube.com/embed/P6PqRB5N12Y?si=W6014oo5zwbXAwnR"
     caption: "Gameplay video."
   - type: "pdf"
-    src: "/assets/NightingaleBrainstorm.pdf"
+    src: "/assets/nightingale-design-document.pdf"
     caption: "Design document."
 ---
 

@@ -5,19 +5,19 @@ category: "Visual Art"
 summary: "A style guide and concept redesign for a 2.5D action adventure game based on the existing IP of Control."
 role: ["Concept Designer", "Visual Designer"]
 tools: ["Concept Art", "Style Guide", "Visual Development"]
-cover: "/assets/concept4.png"
+cover: "/assets/control-aftermath-concept-01.png"
 background: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHdoNWNva2txYTJnenljZjh4cTljNTB4azR5Zjg0cXN2bXlqZjlheCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JfY9AKtUxBC0RvciB5/giphy.gif"
 featured: true
 order: 5
 media:
   - type: "image"
-    src: "/assets/concept4.png"
+    src: "/assets/control-aftermath-concept-01.png"
     caption: "Game concept design."
   - type: "pdf"
-    src: "/assets/Control_StyleGuide.pdf"
+    src: "/assets/control-aftermath-style-guide.pdf"
     caption: "Control: Aftermath style guide."
   - type: "pdf"
-    src: "/assets/DONG_X_Control Analysis Style Guide V2.pdf"
+    src: "/assets/control-aftermath-style-analysis.pdf"
     caption: "IP analysis and visual design guide."
 ---
 
