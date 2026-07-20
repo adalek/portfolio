@@ -15,6 +15,7 @@ const getUsableBackground = (background?: string, cover = '') => {
 };
 
 const defaultBackground = getUsableBackground(projects[0]?.data.background, projects[0]?.data.cover);
+const archiveBackground = 'https://media.giphy.com/media/75epjnrY0ql0kJN34d/giphy.gif';
 ---
 
 <BaseLayout title="Xuwen Dong / Portfolio" description="A portfolio of technical art, games, creative coding, visual arts, and process notes.">
@@ -43,7 +44,7 @@ const defaultBackground = getUsableBackground(projects[0]?.data.background, proj
         title="Work Archive"
         summary="Browse projects by games, technical art, creative coding, visual arts, and sound."
         href="/work"
-        background="/assets/GIF1.gif"
+        background={archiveBackground}
         align="right"
       />
     </section>
