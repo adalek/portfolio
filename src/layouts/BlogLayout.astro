@@ -51,4 +51,22 @@ const post = entry.data;
     padding: 18px;
     background: var(--panel);
   }
+
+  .content :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 24px 0;
+    border: 1px solid var(--line);
+  }
+
+  .content :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .content :global(code) {
+    overflow-wrap: anywhere;
+  }
 </style>
