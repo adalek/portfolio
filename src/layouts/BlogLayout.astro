@@ -69,4 +69,27 @@ const post = entry.data;
   .content :global(code) {
     overflow-wrap: anywhere;
   }
+
+  .content :global(table) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    margin: 24px 0;
+    border-collapse: collapse;
+  }
+
+  .content :global(th),
+  .content :global(td) {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .content :global(th) {
+    color: inherit;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
 </style>
