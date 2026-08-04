@@ -146,6 +146,21 @@ const hasHeroImage = project.cover.length > 0 && !project.cover.toLowerCase().en
     padding-left: 22px;
   }
 
+  .content :global(img) {
+    display: block;
+    width: 100%;
+    max-height: 680px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: var(--media-bg);
+  }
+
+  .content :global(h3) {
+    margin: 42px 0 14px;
+    font-size: clamp(21px, 3vw, 30px);
+    line-height: 1.15;
+  }
+
   @media (max-width: 720px) {
     .meta-grid {
       grid-template-columns: 1fr;
