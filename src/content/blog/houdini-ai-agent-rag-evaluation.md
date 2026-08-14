@@ -79,13 +79,13 @@ Store orientation as a point attribute named orient.
 
 我还使用相同的 RAG 流程和螺旋楼梯任务，对比了云端 DeepSeek-V4-Flash 与本地 Qwen2.5-Coder-7B Q4_K_M。
 
-本地 Qwen 能够创建 Box、Attribute Wrangle 和 Copy to Points 网络，但 VEX 使用了错误常量，最终没有输出几何：
+云端 DeepSeek-V4-Flash 生成的代码没有报错，节点网络也能够执行，但最终的螺旋形状不正确：
 
-![本地 Qwen 生成节点网络但 VEX 编译失败](/assets/blog-houdini-agent-eval-qwen-error.png)
+![云端模型成功执行代码但生成的螺旋楼梯形状不正确](/assets/blog-houdini-agent-eval-cloud-shape-error.png)
 
-修正 VEX 细节后，可以检查模型生成的径向点位与参数：
+本地 Qwen 能够创建 Box、Attribute Wrangle 和 Copy to Points 网络，但 VEX 使用了错误的 `pi` 常量，导致编译失败，最终没有输出几何：
 
-![本地模型生成的螺旋分布 VEX 与错误节点状态](/assets/blog-houdini-agent-eval-qwen-vex.png)
+![本地 Qwen 生成的螺旋分布 VEX 与编译错误节点状态](/assets/blog-houdini-agent-eval-qwen-vex.png)
 
 两种模型的单次实验数据如下：
 
