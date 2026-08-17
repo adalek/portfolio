@@ -2,7 +2,7 @@
 title: "Throw Me A Nose"
 year: 2026
 category: "Game"
-summary: "Bournemouth University BFX Game Jam 第一名：在 72 小时内完成的双人 2D 物理投掷游戏。"
+summary: "Bournemouth University BFX Game Jam 第一名：由两人合作在 72 小时内完成的 2D 物理投掷游戏。"
 role: ["Gameplay Designer", "System Designer", "Prototype Developer"]
 tools: ["Godot", "Game Design", "System Design", "Rapid Prototyping", "AI-Assisted Development"]
 cover: "/assets/throw-me-a-nose-cover.jpg"
@@ -16,7 +16,7 @@ media: []
 
 ## 项目介绍
 
-Throw Me A Nose 是我与队友在 Bournemouth University BFX Game Jam 中完成的双人项目。团队在 2026 年 5 月的 72 小时开发周期内完成了可玩的 2D Prototype，并获得学校 Game Jam 第一名。
+Throw Me A Nose 是我与一名队友在 Bournemouth University BFX Game Jam 中合作开发的项目。我们在 2026 年 5 月的 72 小时开发周期内完成了可玩的 2D Prototype，并获得学校 Game Jam 第一名。
 
 游戏以美容手术和社会对“完美面孔”的追求为灵感，把面部重建转化为带有夸张物理效果的投掷玩法。玩家需要把不同的五官投向面部的正确位置，并根据落点准确度获得分数。
 
