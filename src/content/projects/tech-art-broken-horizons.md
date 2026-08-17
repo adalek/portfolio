@@ -5,7 +5,7 @@ category: "Technical Art"
 summary: "在 Unreal Engine 5 中重建 Tout Quarry Sculpture Park 的程序化环境项目。"
 role: ["Director (Environment & Pipeline)", "Environment Artist", "Tool Developer"]
 tools: ["Unreal Engine 5", "Houdini", "Houdini Engine", "DTM / Heightmap"]
-cover: "/assets/tech-art-2026-broken-horizons-cover.jpg"
+cover: "/assets/broken-horizons-cover-v2.jpeg"
 featured: false
 order: 11
 links:

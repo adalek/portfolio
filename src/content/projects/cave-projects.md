@@ -18,7 +18,7 @@ media: []
 
 ### [Broken Horizons →](/work/tech-art-broken-horizons)
 
-[![Broken Horizons 最终环境画面](/assets/tech-art-2026-broken-horizons-cover.jpg)](/work/tech-art-broken-horizons)
+[![Broken Horizons 中的 Roy Dog 石雕场景](/assets/broken-horizons-cover-v2.jpeg)](/work/tech-art-broken-horizons)
 
 团队在 Unreal Engine 5 中重建 Tout Quarry Sculpture Park 的 “Circle of Stones” 区域。我负责环境与管线方向、场景工作及工具开发。
 
