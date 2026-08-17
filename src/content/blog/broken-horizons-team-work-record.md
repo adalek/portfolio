@@ -302,6 +302,52 @@ External references explicitly included in the notes were:
 
 The weekly records also referenced internal progress files including landscape tests, foliage tests, lighting studies, wind and grass interaction, Niagara tests, and weekly ZIP archives.
 
+### Landscape Resources
+
+The reference list records the following resources for Jessica's landscape work:
+
+#### Gaea
+
+- [Gaea2Unreal plugin](https://github.com/QuadSpinner/Gaea2Unreal/releases/tag/Release)
+- [Gaea and Unreal Engine layers and automatic materials](https://youtu.be/A-v4euFzMAw?si=y4zfHnIPrPuNUQ_E)
+- *Beginner's Guide to Gaea for Unreal Engine | Create Stunning Mountains Fast*
+- [*UE 5.4 | PCG Biome Core Plugin Tutorial*](https://www.youtube.com/watch?v=3yhhDPpEzYI)
+- *Stylized Zelda Landscape! Large Scale PCG Tutorial with Gaea Maps in Unreal Engine*
+- [*7 Minute Photoreal Forest! Procedural Content Generation PCG in Unreal Engine*](https://dev.epicgames.com/community/learning/tutorials/G5XZ/7-minute-photoreal-forest-procedural-content-generation-pcg-in-unreal-engine)
+- [*Real to Unreal 2: Gaea 2.0 to Unreal Engine 5 (NEW UPDATE)*](https://www.youtube.com/watch?v=mBtQc-JQdDc)
+
+#### Unreal Engine 5
+
+- [*How To Spawn GRASS And SMALL FOLIAGE | Unreal Engine 5 Tutorial*](https://www.artstation.com/artwork/RnNK3E)
+- [*How I Built an Open World Survival Island with Procedural Tools in Unreal Engine 5*](https://www.youtube.com/watch?v=HXJehWw4bYc)
+- [*Create Open World Landscape Auto Material - Unreal Engine 5 Complete Tutorial*](https://www.youtube.com/watch?v=UM6ghKAfssQ)
+- [Aziel Arts auto-material download page](https://www.azielarts.com/aam-download-page)
+
+#### Location Data
+
+- [Megalithic Portal location reference](https://www.megalithic.co.uk/article.php?sid=47184)
+- Google Earth shared location data
+- *Import Real Landscapes into Unreal in under 30 minutes using Houdini and real world DTM data*
+- [Environment Agency survey data](https://environment.data.gov.uk/survey)
+
+### Foliage and Grass Resources
+
+The reference list records the following resources for Osher's work:
+
+- Verstreate, S. (2022). [*Project Titan Ivy Tool*](https://www.sidefx.com/tutorials/project-titan-ivy-tool/). SideFX. The recorded use was creating an ivy tool in Houdini and applying it in Unreal Engine.
+- ccgircult LLC. (2024, August 19). [*Procedural Assets Scattering in Unreal Engine 5 with Houdini: Using the Tool*](https://www.youtube.com/watch?v=4XX3As3WG8w&t=296s) [Video]. YouTube. The recorded use was creating an instance tool to scatter an assigned grass asset or another asset.
+
+### Niagara System Resources
+
+The reference list records the following resources for Kyle's Niagara work:
+
+- Gabriel Aguilar Prod. (2024). [*Unreal Engine 5 - Stylized Fire VFX - Niagara Tutorial*](https://www.youtube.com/watch?v=OnxiEY3Khow) [Video]. YouTube.
+- CodeLikeMe (2024). [*Unreal Niagara Butterflies - Animated Mesh Particle Effect*](https://www.youtube.com/watch?v=cWAL260yrPA) [Video]. YouTube. Accessed 15 February 2026.
+- Pierrick Picaut (2023). [*Create beautiful VFX in Unreal Engine 5 - beginner tutorial*](https://www.youtube.com/watch?v=xDD1bfwr6jQ) [Video]. YouTube.
+- Unreal Katya Fedak (2024). *Create An Explosion In Unreal Engine 5 Tutorial* [Video]. YouTube.
+- YedesCodes (2025). *Create Animated Materials For Any Mesh | Unreal Engine 5 AnimToTexture Tutorial* [Video]. YouTube. Accessed 2 March 2026.
+- Izhar Coletti (2024). [*How to create a Bird Flock using Niagara System in Unreal 5.3*](https://www.youtube.com/watch?v=uGaJpS3LaS4) [Video]. YouTube. Accessed 2 March 2026.
+
 ## Recorded Project Management Practices
 
 The supplied records document the use of:
