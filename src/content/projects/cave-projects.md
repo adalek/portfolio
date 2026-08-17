@@ -26,7 +26,7 @@ media: []
 
 [![Houdini AI Agent 生成的程序化楼梯](/assets/blog-houdini-agent-service-staircase-result.png)](/work/tech-art-houdini-ai-agent)
 
-正在进行的硕士毕业设计，探索使用本地 Qwen、Houdini Python、RAG 与 FastAPI 构建可控的程序化建模工作流。详细实验过程持续记录在 Blog 中。
+正在进行的硕士毕业设计，使用本地 Qwen、云端 DeepSeek、RAG 与 FastAPI 探索可控的 Houdini 程序化建模工作流，目前已完成带检索信息、代码预览和人工执行确认的 PySide6 MVP。
 
 ### [Houdini Garden Builder →](/work/tech-art-houdini-garden)
 
