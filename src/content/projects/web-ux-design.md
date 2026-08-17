@@ -5,7 +5,7 @@ category: "Archive"
 summary: "A collection of web design, development, and UX design projects archived in Notion."
 role: ["Programmer", "Designer"]
 tools: ["Web Design", "UX Design", "Frontend", "Research"]
-cover: ""
+cover: "/assets/web-ux-design-cover.png"
 featured: false
 order: 40
 links:

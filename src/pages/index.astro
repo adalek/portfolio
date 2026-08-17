@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeFeatureLink from '../components/HomeFeatureLink.astro';
 
 const projects = (await getCollection('projects'))
-  .filter((project) => project.data.featured)
+  .filter((project) => project.data.featured && !project.data.hidden)
   .sort((a, b) => a.data.order - b.data.order);
 
 const fallbackBackground = '/assets/enmeshed-tinge-light-pattern.gif';

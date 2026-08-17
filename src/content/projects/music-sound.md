@@ -5,7 +5,7 @@ category: "Sound"
 summary: "Music and sound design experiments connected to interactive media and personal creative practice."
 role: ["Sound Designer", "Composer"]
 tools: ["Sound Design", "Composition", "TidalCycles", "Hydra", "NIME"]
-cover: ""
+cover: "/assets/music-and-sound-cover.png"
 background: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
 featured: false
 order: 21

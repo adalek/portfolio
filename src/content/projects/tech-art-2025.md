@@ -5,7 +5,7 @@ category: "Technical Art"
 summary: "A technical art showreel collecting real-time visual experiments, procedural studies, and production-facing art workflows."
 role: ["Technical Artist", "Creative Technologist"]
 tools: ["Unreal Engine", "Unity", "Houdini", "Shaders", "Procedural Art"]
-cover: ""
+cover: "/assets/technical-art-2025-cover.png"
 background: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTdzdzBoamM4N25tcTlheTFwaHIwbWFkcWpoZmc5aXo2aDcyZXc4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nOcxFIyoeUEiDB5kpz/giphy.gif"
 featured: true
 order: 2

@@ -7,6 +7,7 @@ role: ["Composer", "Live Coder", "Visual Designer"]
 tools: ["TidalCycles", "Hydra", "Live Coding", "Audiovisual Performance"]
 cover: ""
 featured: false
+hidden: true
 order: 30
 media:
   - type: "video"

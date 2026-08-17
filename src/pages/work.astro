@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import TagConstellation from '../components/TagConstellation.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => {
+const projects = (await getCollection('projects')).filter((project) => !project.data.hidden).sort((a, b) => {
   if (a.data.year !== b.data.year) return b.data.year - a.data.year;
   return a.data.order - b.data.order;
 });

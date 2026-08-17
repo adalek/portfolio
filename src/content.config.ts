@@ -13,6 +13,7 @@ const projects = defineCollection({
     cover: z.string(),
     background: z.string().optional(),
     featured: z.boolean().default(false),
+    hidden: z.boolean().default(false),
     order: z.number().default(999),
     links: z
       .array(
