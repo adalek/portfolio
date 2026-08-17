@@ -28,6 +28,10 @@ const {
       const theme = savedTheme === 'light' ? 'light' : 'dark';
       document.documentElement.dataset.theme = theme;
     </script>
+    <script is:inline>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <SiteHeader />
