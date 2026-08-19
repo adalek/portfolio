@@ -13,14 +13,21 @@ links:
     url: "/work/cave-projects"
   - label: "GitHub Repository"
     url: "https://github.com/adalek/MasterProject"
-media: []
+  - label: "Demo Video"
+    url: "https://vimeo.com/1218752953?share=copy&fl=sv&fe=ci"
+media:
+  - type: "pdf"
+    src: "/assets/houdini-ai-agent-final-presentation.pdf"
+    caption: "Exploring Retrieval-Augmented Code Generation for Procedural Modelling in Houdini 项目汇报。"
 ---
 
 ## 项目状态
 
 正在进行。
 
-这是我的硕士毕业设计，研究如何使用大语言模型辅助 Houdini 程序化建模。当前目标不是把系统描述成已经完成的通用 Agent，而是逐步验证一条可控的工作流：用户输入自然语言，系统根据设置检索 Houdini 知识并调用本地或云端模型，生成的 Python 先交给用户检查，再决定是否在 Houdini 中执行。
+这是我的硕士毕业设计，研究如何使用大语言模型辅助 Houdini 程序化建模。最终汇报将研究范围进一步明确为：探索 Retrieval-Augmented Generation 能否为 Houdini 代码生成提供可复用的程序化知识。
+
+当前目标不是把系统描述成已经完成的通用 Agent，而是逐步验证一条可控的工作流：用户输入自然语言，系统根据设置检索 Houdini 知识并调用本地或云端模型，生成的 Python 先交给用户检查，再决定是否在 Houdini 中执行。
 
 ## 当前工作流
 
@@ -68,7 +75,17 @@ Houdini 执行代码并生成节点网络
 
 当前 GUI 已经能够选择本地 Qwen 或 DeepSeek、决定是否使用 RAG、查看检索来源和 Distance、预览生成代码，并由用户确认后在 Houdini 中执行。这让检索和生成过程从 Shelf Tool 与 Python Shell 中移到一个可操作的界面，同时保留人工审核环节。
 
+## 阶段性结论
+
+- 自然语言可以映射到现有程序化控制，例如修改楼梯的台阶数量和高度。
+- RAG 可以向模型提供可复用的 Houdini-specific Pattern；Copy to Points 的连接关系和直线楼梯结构都从检索知识中受益。
+- 更复杂的组合仍然受到模型能力限制。螺旋楼梯需要同时处理空间分布与方向关系，本地模型和云端模型会以不同方式失败。
+
+因此，当前更可行的方向是让 AI 成为现有程序化系统的交互层，帮助选择模块和配置参数，而不是把代码能够执行直接等同于几何结果正确。
+
 项目仍处于研究和验证阶段。当前知识库只有少量楼梯案例，现有结果不能代表一般任务的成功率；`top_k`、Context 长度、输出限制、模型差异和语料质量都会影响结果。后续仍需要扩充经过验证的知识、建立自动化评测，并研究生成失败后的验证与修复流程。
+
+报告提出的后续方向包括检索结果 reranking、针对不同模型配置 RAG、多阶段任务分解、基于 Python / VEX / Houdini 反馈的错误修复，以及视觉或几何验证。
 
 ## 开发记录
 
